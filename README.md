@@ -9,6 +9,7 @@ problem solving Project Euler
 - Awk
 - Bash
 - C
+- C#
 - C++
 - Clojure
 - CoffeeScript
@@ -24,4 +25,5 @@ problem solving Project Euler
 - R
 - Ruby
 - Rust
+- Swift
 - Tcl
