@@ -75,6 +75,9 @@ def_command() {
         "awk" )
             def_test $commandname "$(awk -f $filename)"
             ;;
+        "r" )
+            def_test $commandname "$(Rscript $filename)"
+            ;;
         "*" )
             echo "nothing"
             ;;
