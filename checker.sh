@@ -5,7 +5,7 @@ ccount="\e[1;44m"
 cneed="\e[1;41m"
 result=0
 test_count=0
-name=(python python3 ruby tcl javascript coffeescript bash c lua php awk)
+name=(as asm awk bash c clj coffeescript cpp erl go hs java javascript lua php python python3 r rs ruby swift tcl)
 
 array_remove_value() {
     value=$1
