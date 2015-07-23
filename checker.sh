@@ -36,6 +36,9 @@ def_command() {
         "coffeescript" )
             def_test $commandname "$(coffee $filename)"
             ;;
+        "bash" )
+            def_test $commandname "$(bash $filename)"
+            ;;
         "*" )
             echo "nothing"
             ;;
@@ -45,7 +48,7 @@ def_command() {
 def_find() {
     basename=$1
     filename=$2
-    name=(python python3 ruby tcl javascript coffeescript)
+    name=(python python3 ruby tcl javascript coffeescript bash)
     for i in "${name[@]}"
     do
         if [[ $basename == $i ]]
