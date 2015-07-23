@@ -42,6 +42,9 @@ def_command() {
         "c" )
             def_test $commandname "$(gcc -o compile -std=c99 $filename && ./compile)"
             ;;
+        "lua" )
+            def_test $commandname "$(lua $filename)"
+            ;;
         "*" )
             echo "nothing"
             ;;
@@ -51,7 +54,7 @@ def_command() {
 def_find() {
     basename=$1
     filename=$2
-    name=(python python3 ruby tcl javascript coffeescript bash c)
+    name=(python python3 ruby tcl javascript coffeescript bash c lua)
     for i in "${name[@]}"
     do
         if [[ $basename == $i ]]
