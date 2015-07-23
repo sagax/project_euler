@@ -1,7 +1,13 @@
 cnormal="\e[0m"
 ctrue="\e[1;32m"
 cfalse="\e[1;31m"
+ccount="\e[1;44m"
 result=0
+test_count=0
+
+def_count() {
+    printf "\ncount test: ${ccount}$test_count${cnormal}\n"
+}
 
 def_test() {
     commandname=$1
@@ -9,8 +15,10 @@ def_test() {
     if [[ $output -eq $result ]]
     then
         printf "$commandname: \t ${ctrue}TRUE${cnormal}\n"
+        test_count=$((test_count + 1))
     else
         printf "$commandname: \t ${cfalse}FALSE${cnormal}\n"
+        test_count=$((test_count + 1))
     fi
 }
 
@@ -48,6 +56,9 @@ def_command() {
         "php" )
             def_test $commandname "$(php $filename)"
             ;;
+        "awk" )
+            def_test $commandname "$(awk -f $filename)"
+            ;;
         "*" )
             echo "nothing"
             ;;
@@ -57,7 +68,7 @@ def_command() {
 def_find() {
     basename=$1
     filename=$2
-    name=(python python3 ruby tcl javascript coffeescript bash c lua php)
+    name=(python python3 ruby tcl javascript coffeescript bash c lua php awk)
     for i in "${name[@]}"
     do
         if [[ $basename == $i ]]
@@ -77,4 +88,5 @@ run_check() {
             def_find ${array[0]} $filename
         fi
     done
+    def_count
 }
