@@ -2,11 +2,27 @@ cnormal="\e[0m"
 ctrue="\e[1;32m"
 cfalse="\e[1;31m"
 ccount="\e[1;44m"
+cneed="\e[1;41m"
 result=0
 test_count=0
+name=(python python3 ruby tcl javascript coffeescript bash c lua php awk)
+
+array_remove_value() {
+    value=$1
+    for i in "${!name[@]}"
+    do
+        if [[ "${name[$i]}" == $value ]]
+        then
+            unset name[$i]
+        fi
+    done
+}
 
 def_count() {
-    printf "\ncount test: ${ccount}$test_count${cnormal}\n"
+    printf "\n"
+    printf "count pass: ${ccount} $test_count ${cnormal}\n"
+    printf "count need: ${cneed} ${#name[*]} ${cnormal}\n"
+    printf "lang need: ${name[*]}\n"
 }
 
 def_test() {
@@ -68,12 +84,13 @@ def_command() {
 def_find() {
     basename=$1
     filename=$2
-    name=(python python3 ruby tcl javascript coffeescript bash c lua php awk)
     for i in "${name[@]}"
     do
         if [[ $basename == $i ]]
         then
+            value=$i
             def_command $i $filename
+            array_remove_value $value
         fi
     done
 }
@@ -81,7 +98,7 @@ def_find() {
 run_check() {
     for file in *
     do
-        if [ -f $file ]
+        if [[ -f $file ]]
         then
             filename=$file
             array=(${filename//./ })
