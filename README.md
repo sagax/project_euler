@@ -5,6 +5,7 @@ problem solving Project Euler
 ### tool list
 
 - Action Script
+- Assembler
 - Awk
 - Bash
 - C
@@ -22,4 +23,5 @@ problem solving Project Euler
 - Python3
 - R
 - Ruby
+- Rust
 - Tcl
