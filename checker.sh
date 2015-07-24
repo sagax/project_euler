@@ -81,6 +81,9 @@ def_command() {
         "clojure" )
             def_test $commandname "$(java -cp ~/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar clojure.main $filename)"
             ;;
+        "cpp" )
+            def_test $commandname "$(gcc -o compile $filename && ./compile)"
+            ;;
         "*" )
             echo "nothing"
             ;;
