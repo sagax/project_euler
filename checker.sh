@@ -5,7 +5,7 @@ ccount="\e[1;44m"
 cneed="\e[1;41m"
 result=0
 test_count=0
-name=(as asm awk bash c clojure coffeescript cpp erl go hs java javascript lua php python python3 r rs ruby swift tcl)
+name=(as asm awk bash c clojure coffeescript cpp erl go hs java javascript lua php python python3 r rust ruby swift tcl)
 
 array_remove_value() {
     value=$1
@@ -64,7 +64,7 @@ def_command() {
             def_test $commandname "$(bash $filename)"
             ;;
         "c" )
-            def_test $commandname "$(gcc -o compile -std=c99 $filename && ./compile)"
+            def_test $commandname "$(gcc -o compile_c -std=c99 $filename && ./compile_c)"
             ;;
         "lua" )
             def_test $commandname "$(lua $filename)"
@@ -82,10 +82,13 @@ def_command() {
             def_test $commandname "$(java -cp ~/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar clojure.main $filename)"
             ;;
         "cpp" )
-            def_test $commandname "$(gcc -o compile $filename && ./compile)"
+            def_test $commandname "$(gcc -o compile_cpp $filename && ./compile_cpp)"
             ;;
         "go" )
             def_test $commandname "$(go run $filename)"
+            ;;
+        "rust" )
+            def_test $commandname "$(rustc -o compile_rust $filename && ./compile_rust)"
             ;;
         "*" )
             echo "nothing"
