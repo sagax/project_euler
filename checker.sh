@@ -84,6 +84,9 @@ def_command() {
         "cpp" )
             def_test $commandname "$(gcc -o compile $filename && ./compile)"
             ;;
+        "go" )
+            def_test $commandname "$(go run $filename)"
+            ;;
         "*" )
             echo "nothing"
             ;;
