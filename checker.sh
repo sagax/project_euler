@@ -5,7 +5,7 @@ ccount="\e[1;44m"
 cneed="\e[1;41m"
 result=0
 test_count=0
-name=(as asm awk bash c clj coffeescript cpp erl go hs java javascript lua php python python3 r rs ruby swift tcl)
+name=(as asm awk bash c clojure coffeescript cpp erl go hs java javascript lua php python python3 r rs ruby swift tcl)
 
 array_remove_value() {
     value=$1
@@ -77,6 +77,9 @@ def_command() {
             ;;
         "r" )
             def_test $commandname "$(Rscript $filename)"
+            ;;
+        "clojure" )
+            def_test $commandname "$(java -cp ~/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar clojure.main $filename)"
             ;;
         "*" )
             echo "nothing"
