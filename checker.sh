@@ -90,6 +90,9 @@ def_command() {
         "rust" )
             def_test $commandname "$(rustc -o compile_rust $filename && ./compile_rust)"
             ;;
+        "java" )
+            def_test $commandname "$(javac $filename && java compile_java)"
+            ;;
         "*" )
             echo "nothing"
             ;;
