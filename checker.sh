@@ -5,7 +5,7 @@ ccount="\e[1;44m"
 cneed="\e[1;41m"
 result=0
 test_count=0
-name=(as asm awk bash c clojure coffeescript cpp erl go hs java javascript lua php python python3 r rust ruby swift tcl)
+name=(actionscript assembler awk bash c clojure coffeescript cpp erlang go haskell java javascript lua perl php python python3 r rust ruby swift tcl)
 
 array_remove_value() {
     value=$1
@@ -32,6 +32,7 @@ def_test() {
     then
         printf "$commandname: \t ${ctrue}TRUE${cnormal}\n"
         test_count=$((test_count + 1))
+        array_remove_value $commandname
     else
         printf "$commandname: \t ${cfalse}FALSE${cnormal}\n"
         test_count=$((test_count + 1))
@@ -93,6 +94,9 @@ def_command() {
         "java" )
             def_test $commandname "$(javac $filename && java compile_java)"
             ;;
+        "perl" )
+            def_test $commandname "$(perl $filename)"
+            ;;
         "*" )
             echo "nothing"
             ;;
@@ -108,7 +112,6 @@ def_find() {
         then
             value=$i
             def_command $i $filename
-            array_remove_value $value
         fi
     done
 }

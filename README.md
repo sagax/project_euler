@@ -18,6 +18,7 @@ problem solving Project Euler
 - Java
 - JavaScript
 - Lua
+- Perl
 - Php
 - Python
 - Python3
