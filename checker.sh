@@ -85,7 +85,7 @@ def_command() {
             def_test $commandname "$(gcc -o compile_cpp $filename && ./compile_cpp)"
             ;;
         "go" )
-            def_test $commandname "$(go run $filename)"
+            def_test $commandname "$(go build -o compile_go $filename && ./compile_go)"
             ;;
         "rust" )
             def_test $commandname "$(rustc -o compile_rust $filename && ./compile_rust)"
