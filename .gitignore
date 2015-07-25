@@ -1,5 +1,6 @@
 tags
 compile*
+!compile_methods.sh
 .Rhistory
 haskell*
 !haskell.hs
