@@ -97,6 +97,9 @@ def_command() {
         "perl" )
             def_test $commandname "$(perl $filename)"
             ;;
+        "assembler" )
+            def_test $commandname "$(nasm -f elf64 $filename && ld -o compile_assembler assembler.o && ./compile_assembler)"
+            ;;
         "*" )
             echo "nothing"
             ;;

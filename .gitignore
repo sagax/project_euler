@@ -3,3 +3,5 @@ compile*
 .Rhistory
 haskell*
 !haskell.hs
+assembler*
+!assembler.asm
