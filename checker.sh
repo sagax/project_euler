@@ -6,6 +6,8 @@ cneed="\e[1;41m"
 result=0
 test_count=0
 name=(actionscript assembler awk bash c clojure coffeescript cpp erlang go haskell java javascript lua perl php python python3 r rust ruby swift tcl)
+source ../compile_methods.sh
+output=""
 
 array_remove_value() {
     value=$1
@@ -27,15 +29,22 @@ def_count() {
 
 def_test() {
     commandname=$1
-    output=$2
-    if [[ $output -eq $result ]]
+    if [[ "$output" =~ [a-z] ]]
     then
-        printf "$commandname: \t ${ctrue}TRUE${cnormal}\n"
-        test_count=$((test_count + 1))
-        array_remove_value $commandname
-    else
         printf "$commandname: \t ${cfalse}FALSE${cnormal}\n"
         test_count=$((test_count + 1))
+        echo ">> $output <<"
+    else
+        if [[ "$output" -eq "$result" ]]
+        then
+            printf "$commandname: \t ${ctrue}TRUE${cnormal}\n"
+            test_count=$((test_count + 1))
+            array_remove_value $commandname
+        else
+            printf "$commandname: \t ${cfalse}FALSE${cnormal}\n"
+            test_count=$((test_count + 1))
+            echo ">> $output <<"
+        fi
     fi
 }
 
@@ -44,61 +53,84 @@ def_command() {
     filename=$2
     case "$commandname" in
         "python" )
-            def_test $commandname "$(python $filename)"
+            compile_python
+            def_test $commandname
             ;;
         "python3" )
-            def_test $commandname "$(python3 $filename)"
+            compile_python3
+            def_test $commandname
             ;;
         "ruby" )
-            def_test $commandname "$(ruby $filename)"
+            compile_ruby
+            def_test $commandname
             ;;
         "tcl" )
-            def_test $commandname "$(tclsh $filename)"
+            compile_tcl
+            def_test $commandname
             ;;
         "javascript" )
-            def_test $commandname "$(node $filename)"
+            compile_javascript
+            def_test $commandname
             ;;
         "coffeescript" )
-            def_test $commandname "$(coffee $filename)"
+            compile_coffeescript
+            def_test $commandname
             ;;
         "bash" )
-            def_test $commandname "$(bash $filename)"
+            compile_bash
+            def_test $commandname
             ;;
         "c" )
-            def_test $commandname "$(gcc -o compile_c -std=c99 $filename && ./compile_c)"
+            compile_c
+            def_test $commandname
             ;;
         "lua" )
-            def_test $commandname "$(lua $filename)"
+            compile_lua
+            def_test $commandname
             ;;
         "php" )
-            def_test $commandname "$(php $filename)"
+            compile_php
+            def_test $commandname
             ;;
         "awk" )
-            def_test $commandname "$(awk -f $filename)"
+            compile_awk
+            def_test $commandname
             ;;
         "r" )
-            def_test $commandname "$(Rscript $filename)"
+            compile_r
+            def_test $commandname
             ;;
         "clojure" )
-            def_test $commandname "$(java -cp ~/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar clojure.main $filename)"
+            compile_clojure
+            def_test $commandname
             ;;
         "cpp" )
-            def_test $commandname "$(gcc -o compile_cpp $filename && ./compile_cpp)"
+            compile_cpp
+            def_test $commandname
             ;;
         "go" )
-            def_test $commandname "$(go build -o compile_go $filename && ./compile_go)"
+            compile_go
+            def_test $commandname
             ;;
         "rust" )
-            def_test $commandname "$(rustc -o compile_rust $filename && ./compile_rust)"
+            compile_rust
+            def_test $commandname
             ;;
         "java" )
-            def_test $commandname "$(javac $filename && java compile_java)"
+            compile_java
+            def_test $commandname
             ;;
         "perl" )
-            def_test $commandname "$(perl $filename)"
+            compile_perl
+            def_test $commandname
             ;;
         "assembler" )
-            def_test $commandname "$(nasm -f elf64 $filename && ld -o compile_assembler assembler.o && ./compile_assembler)"
+            compile_assembler
+            def_test $commandname
+            ;;
+        "haskell" )
+            compile_haskell
+            def_test $commandname
             ;;
         "*" )
             echo "nothing"
