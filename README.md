@@ -4,7 +4,6 @@ problem solving Project Euler
 
 ### tool list
 
-- Action Script
 - Assembler
 - Awk
 - Bash
