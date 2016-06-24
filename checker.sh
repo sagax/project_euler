@@ -156,14 +156,24 @@ def_find() {
 }
 
 run_check() {
-    for file in *
-    do
-        if [[ -f $file ]]
-        then
-            filename=$file
-            array=(${filename//./ })
-            def_find ${array[0]} $filename
-        fi
-    done
-    def_count
+    local target="$1"
+    local commandname
+
+    if [[ -n $target ]]
+    then
+        filename=$target
+        array=(${filename//./ })
+        def_find ${array[0]} $filename
+    else
+        for file in *
+        do
+            if [[ -f "$file" ]]
+            then
+                filename=$file
+                array=(${filename//./ })
+                def_find ${array[0]} $filename
+            fi
+        done
+        def_count
+    fi
 }
