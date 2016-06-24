@@ -42,7 +42,13 @@ compile_cpp() {
 }
 
 compile_clojure() {
-    output="$(java -cp ~/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar clojure.main $filename)"
+    if [[ -f ~/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar ]]
+    then
+        output="$(java -cp ~/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar clojure.main $filename)"
+    elif [[ -f ~/programs/clojure/clojure-1.8.0/clojure-1.8.0.jar ]]
+    then
+        output="$(java -cp ~/programs/clojure/clojure-1.8.0/clojure-1.8.0.jar clojure.main $filename)"
+    fi
 }
 
 compile_r() {
@@ -99,4 +105,10 @@ compile_coffeescript() {
 
 compile_ruby() {
     output="$(ruby $filename)"
+}
+
+compile_erlang() {
+    erlc $filename
+    output="$(erl -noshell -s erl -s init stop)"
+    rm erl.beam
 }
