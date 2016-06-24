@@ -14,9 +14,9 @@ compile_assembler() {
 }
 
 compile_rust() {
-    rustc -o compile_rust $filename
+    rustc -o "compile_rust" $filename
     output="$(./compile_rust)"
-    rm compile_rust
+    rm "compile_rust"
 }
 
 compile_java() {
