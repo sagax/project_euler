@@ -10,6 +10,6 @@ int main()
             summ += item;
         }
     }
-    printf ("%d\n", summ);
+    printf ("%d", summ);
     return 0;
 }

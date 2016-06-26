@@ -1,4 +1,5 @@
 # ruby 1.9.3p551 (2014-11-13 revision 48407) [x86_64-linux]
+# ruby 1.9.3p551 (2014-11-13 revision 48407) [i686-linux]
 
 summ = 0
 for item in 0...1000

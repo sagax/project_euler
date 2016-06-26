@@ -9,4 +9,4 @@ do
     fi
 done
 
-echo $summ
+printf "$summ"
