@@ -42,12 +42,12 @@ compile_cpp() {
 }
 
 compile_clojure() {
-    if [[ -f ~/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar ]]
+    if [[ -f $HOME/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar ]]
     then
-        output="$(java -cp ~/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar clojure.main $filename)"
-    elif [[ -f ~/programs/clojure/clojure-1.8.0/clojure-1.8.0.jar ]]
+        output="$(java -cp $HOME/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar clojure.main $filename)"
+    elif [[ -f $HOME/programs/clojure/clojure-1.8.0/clojure-1.8.0.jar ]]
     then
-        output="$(java -cp ~/programs/clojure/clojure-1.8.0/clojure-1.8.0.jar clojure.main $filename)"
+        output="$(java -cp $HOME/programs/clojure/clojure-1.8.0/clojure-1.8.0.jar clojure.main $filename)"
     fi
 }
 
@@ -111,4 +111,8 @@ compile_erlang() {
     erlc $filename
     output="$(erl -noshell -s erl -s init stop)"
     rm erl.beam
+    if [[ -f erl_crash.dump ]]
+    then
+        rm erl_crash.dump
+    fi
 }
