@@ -5,7 +5,7 @@ ccount="\e[1;44m"
 cneed="\e[1;41m"
 result=0
 test_count=0
-name=(assembler awk bash c clojure coffeescript cpp erl go haskell java javascript lua perl php python python3 r rust ruby swift tcl)
+name=(assembler awk bash c clojure coffeescript cpp erl go haskell java javascript lua perl php python python3 r rust ruby tcl)
 source ../compile_methods.sh
 output=""
 
