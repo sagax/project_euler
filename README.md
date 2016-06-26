@@ -1,4 +1,5 @@
-# project_euler
+project_euler
+============
 
 problem solving Project Euler
 
@@ -8,9 +9,9 @@ problem solving Project Euler
 - Awk
 - Bash
 - C
-- C++
 - Clojure
 - CoffeeScript
+- C++
 - Erlang
 - Go
 - Haskell
@@ -19,10 +20,9 @@ problem solving Project Euler
 - Lua
 - Perl
 - Php
-- Python
 - Python3
+- Python
 - R
 - Ruby
 - Rust
-- Swift
 - Tcl
