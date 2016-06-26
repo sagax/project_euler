@@ -7,3 +7,4 @@ haskell*
 assembler*
 !assembler.asm
 *.dump
+*.beam
