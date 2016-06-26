@@ -6,3 +6,4 @@ haskell*
 !haskell.hs
 assembler*
 !assembler.asm
+*.dump
