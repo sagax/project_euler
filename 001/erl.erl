@@ -4,4 +4,15 @@
 -export([start/0]).
 
 start() ->
-    io:fwrite("Hello, world!\n").
+    List = lists:filter(
+             fun(X) ->
+                     if
+                         X rem 3 =:= 0 -> true;
+                         X rem 5 =:= 0 -> true;
+                         X rem 3 =:= 1 -> false;
+                         X rem 5 =:= 1 -> false;
+                         true -> false
+                     end
+             end, lists:seq(0, 999)),
+    Result = lists:foldl(fun(X, Sum) -> X + Sum end, 0, List),
+    io:format("~p", [Result]).
