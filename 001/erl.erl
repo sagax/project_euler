@@ -9,8 +9,6 @@ start() ->
                      if
                          X rem 3 =:= 0 -> true;
                          X rem 5 =:= 0 -> true;
-                         X rem 3 =:= 1 -> false;
-                         X rem 5 =:= 1 -> false;
                          true -> false
                      end
              end, lists:seq(0, 999)),
