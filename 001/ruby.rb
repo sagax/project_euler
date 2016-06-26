@@ -2,7 +2,7 @@
 
 summ = 0
 for item in 0...1000
-  if item % 3 == 0 or item % 5 === 0
+  if item % 3 === 0 or item % 5 === 0
     summ += item
   end
 end
