@@ -2,9 +2,9 @@
 
 summ = 0
 for item = 0, 999 do
-    if (item % 3 == 0 or item % 5 == 0)
+  if (item % 3 == 0 or item % 5 == 0)
     then
-        summ = summ + item
+      summ = summ + item
     end
-end
+  end
 print (summ)
