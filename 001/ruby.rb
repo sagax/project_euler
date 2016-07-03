@@ -7,4 +7,6 @@ for item in 0...1000
     summ += item
   end
 end
+
 puts summ
+

@@ -8,3 +8,4 @@ for (item = 0; item < 1000; item++) {
   }
 }
 console.log(summ);
+

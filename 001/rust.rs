@@ -8,5 +8,7 @@ fn main() {
             summ += item;
         }
     }
+
     println!("{}", summ);
 }
+

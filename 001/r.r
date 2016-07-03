@@ -7,4 +7,6 @@ for (item in 1:999) {
     summ <- summ + item
   }
 }
+
 cat (summ)
+

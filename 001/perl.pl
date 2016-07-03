@@ -6,4 +6,6 @@ for ($item = 0; $item < 1000; $item++) {
         $summ += $item;
     }
 }
+
 print "$summ";
+

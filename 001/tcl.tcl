@@ -6,4 +6,6 @@ for {set item 0} {$item < 1000} {incr item} {
     incr summ $item
   }
 }
+
 puts $summ
+

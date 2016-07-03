@@ -7,4 +7,6 @@ for item = 0, 999 do
       summ = summ + item
     end
   end
+
 print (summ)
+

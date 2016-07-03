@@ -6,3 +6,4 @@ for item in range(0, 1000):
         summ += item
 
 print summ
+
