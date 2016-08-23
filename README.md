@@ -24,5 +24,6 @@ problem solving Project Euler
 - Python
 - R
 - Ruby
+- Crystal
 - Rust
 - Tcl
