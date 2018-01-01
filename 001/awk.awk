@@ -1,4 +1,5 @@
 # GNU Awk 4.0.1
+# GNU Awk 4.1.1, API: 1.1
 
 BEGIN {
     summ = 0

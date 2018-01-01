@@ -1,4 +1,5 @@
 # 8.5
+# 8.6
 
 set summ 0
 for {set item 0} {$item < 1000} {incr item} {

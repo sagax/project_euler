@@ -1,4 +1,5 @@
 // go version go1.0.2
+// go version go1.4.3 linux/386
 
 package main
 

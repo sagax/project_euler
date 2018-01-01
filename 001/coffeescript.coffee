@@ -1,5 +1,6 @@
 # CoffeeScript version 1.8.0
 # CoffeeScript version 1.10.0
+# CoffeeScript version 1.12.2
 
 summ = 0
 for item in [0...1000]

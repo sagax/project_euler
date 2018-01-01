@@ -1,4 +1,5 @@
 <?php //PHP 5.3.15 (cli) ?>
+<?php //PHP 5.6.1 (cli) ?>
 <?php
 $summ=0;
 for($item = 0; $item < 1000; $item++) {
