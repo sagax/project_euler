@@ -1,3 +1,7 @@
+compile_ocaml() {
+    output=$(ocaml $filename)
+}
+
 compile_haskell() {
     ghc -v0 -o compile_haskell $filename
     output="$(./compile_haskell)"
@@ -22,7 +26,11 @@ compile_rust() {
 compile_java() {
     javac $filename
     output="$(java compile_java)"
-    rm compile_java.class
+    if [[ $? -eq 1 ]]; then
+        output=""
+    else
+        rm compile_java.class
+    fi
 }
 
 compile_go() {
@@ -42,11 +50,9 @@ compile_cpp() {
 }
 
 compile_clojure() {
-    if [[ -f $HOME/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar ]]
-    then
+    if [[ -f $HOME/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar ]]; then
         output="$(java -cp $HOME/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar clojure.main $filename)"
-    elif [[ -f $HOME/programs/clojure/clojure-1.8.0/clojure-1.8.0.jar ]]
-    then
+    elif [[ -f $HOME/programs/clojure/clojure-1.8.0/clojure-1.8.0.jar ]]; then
         output="$(java -cp $HOME/programs/clojure/clojure-1.8.0/clojure-1.8.0.jar clojure.main $filename)"
     fi
 }
