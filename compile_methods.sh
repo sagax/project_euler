@@ -129,3 +129,7 @@ compile_erlang() {
     rm -f erl.beam
     rm -f erl_crash.dump
 }
+
+compile_racket() {
+  output="$(racket $filename)"
+}
