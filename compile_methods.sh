@@ -131,5 +131,9 @@ compile_erlang() {
 }
 
 compile_racket() {
-  output="$(racket $filename)"
+    output="$(racket $filename)"
+}
+
+compile_dart() {
+    output="$(dart $filename)"
 }
