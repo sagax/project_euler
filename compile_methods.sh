@@ -4,23 +4,38 @@ compile_ocaml() {
 
 compile_haskell() {
     ghc -v0 -o compile_haskell $filename
-    output="$(./compile_haskell)"
-    rm haskell.{hi,o}
-    rm compile_haskell
+    if [[ $? -eq 0 ]]; then
+      output="$(./compile_haskell)"
+    else
+      output="not compiled"
+    fi
+    rm -f haskell.{hi,o}
+    rm -f compile_haskell
+}
+
+compile_nim() {
+    nim compile --hints:off --warnings:off $filename
+    if [[ $? -eq 0 ]]; then
+      output="$(./nim)"
+    else
+      output="not compiled"
+    fi
+    rm -rf nimcache
+    rm -rf nim
 }
 
 compile_assembler() {
     nasm -f elf64 $filename
     ld -o compile_assembler assembler.o
     output="$(./compile_assembler)"
-    rm assembler.o
-    rm compile_assembler
+    rm -f assembler.o
+    rm -f compile_assembler
 }
 
 compile_rust() {
     rustc -o "compile_rust" $filename
     output="$(./compile_rust)"
-    rm "compile_rust"
+    rm -f "compile_rust"
 }
 
 compile_java() {
@@ -29,14 +44,14 @@ compile_java() {
     if [[ $? -eq 1 ]]; then
         output=""
     else
-        rm compile_java.class
+        rm -f compile_java.class
     fi
 }
 
 compile_go() {
     go build -o compile_go $filename
     output="$(./compile_go)"
-    rm compile_go
+    rm -f compile_go
 }
 
 compile_perl() {
@@ -46,15 +61,11 @@ compile_perl() {
 compile_cpp() {
     gcc -o compile_cpp $filename
     output="$(./compile_cpp)"
-    rm compile_cpp
+    rm -f compile_cpp
 }
 
 compile_clojure() {
-    if [[ -f $HOME/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar ]]; then
-        output="$(java -cp $HOME/programs/clojure/clojure-1.7.0/clojure-1.7.0.jar clojure.main $filename)"
-    elif [[ -f $HOME/programs/clojure/clojure-1.8.0/clojure-1.8.0.jar ]]; then
-        output="$(java -cp $HOME/programs/clojure/clojure-1.8.0/clojure-1.8.0.jar clojure.main $filename)"
-    fi
+    output="$(clojure $filename)"
 }
 
 compile_r() {
@@ -76,21 +87,21 @@ compile_lua() {
 compile_c() {
     gcc -o compile_c -std=c99 $filename
     output="$(./compile_c)"
-    rm compile_c
+    rm -f compile_c
 }
 
 compile_cpp() {
     gcc -o compile_cpp $filename
     output="$(./compile_cpp)"
-    rm compile_cpp
+    rm -f compile_cpp
 }
 
 compile_bash() {
     output="$(bash $filename)"
 }
 
-compile_python() {
-    output="$(python $filename)"
+compile_python2() {
+    output="$(python2 $filename)"
 }
 
 compile_python3() {
@@ -114,11 +125,7 @@ compile_ruby() {
 }
 
 compile_erlang() {
-    erlc $filename
-    output="$(erl -noshell -s erl -s init stop)"
-    rm erl.beam
-    if [[ -f erl_crash.dump ]]
-    then
-        rm erl_crash.dump
-    fi
+    output="$(erlc $filename && erl -noshell -s erl -s init stop)"
+    rm -f erl.beam
+    rm -f erl_crash.dump
 }
