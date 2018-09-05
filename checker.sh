@@ -5,7 +5,7 @@ ccount="\e[1;44m"
 cneed="\e[1;41m"
 result=0
 test_count=0
-name=(assembler awk bash c clojure coffeescript cpp erl go haskell java javascript lua perl php python python3 r rust ruby tcl ocaml)
+name=(assembler awk bash c clojure coffeescript cpp erl go haskell java javascript lua nim ocaml perl php python2 python3 r ruby rust tcl)
 source ../compile_methods.sh
 output=""
 
@@ -52,8 +52,8 @@ def_command() {
     commandname=$1
     filename=$2
     case "$commandname" in
-        "python" )
-            compile_python
+        "python2" )
+            compile_python2
             def_test $commandname
             ;;
         "python3" )
@@ -86,6 +86,10 @@ def_command() {
             ;;
         "lua" )
             compile_lua
+            def_test $commandname
+            ;;
+        "nim" )
+            compile_nim
             def_test $commandname
             ;;
         "php" )
