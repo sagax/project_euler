@@ -137,3 +137,9 @@ compile_racket() {
 compile_dart() {
     output="$(dart $filename)"
 }
+
+compile_crystal() {
+    crystal build $filename
+    output=$(./crystal)
+    rm -f crystal
+}
