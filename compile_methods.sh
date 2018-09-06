@@ -14,7 +14,7 @@ compile_haskell() {
 }
 
 compile_nim() {
-    nim compile --hints:off --warnings:off $filename
+    nim compile --verbosity:0 --hints:off --warnings:off $filename
     if [[ $? -eq 0 ]]; then
       output="$(./nim)"
     else
