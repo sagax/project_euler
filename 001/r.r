@@ -1,6 +1,4 @@
-# R scripting front-end version 3.2.1 (2015-06-18)
-# R scripting           version 3.2.5 Patched (2016-04-18 r70566)
-# R version             version 3.1.1 (2014-07-10)
+# R version 3.5.3 (2019-03-11) -- "Great Truth"
 
 summ <- 0
 for (item in 1:999) {
