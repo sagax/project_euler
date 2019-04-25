@@ -21,6 +21,7 @@ problem solving Project Euler
 - JavaScript
 - Lua
 - Nim
+- MoonScript
 - Ocaml
 - Perl
 - Php
@@ -31,3 +32,4 @@ problem solving Project Euler
 - Ruby
 - Rust
 - Tcl
+- Vim
