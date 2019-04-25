@@ -3,7 +3,7 @@ compile_ocaml() {
 }
 
 compile_haskell() {
-    ghc -v0 -o compile_haskell $filename
+    ghc -v0 -o compile_haskell $filename 2>/dev/null
     if [[ $? -eq 0 ]]; then
       output="$(./compile_haskell)"
     else
@@ -142,4 +142,12 @@ compile_crystal() {
     crystal build $filename
     output=$(./crystal)
     rm -f crystal
+}
+
+compile_vim() {
+    output=$(vim -es -R -N -u NONE -n -S $filename)
+}
+
+compile_moonscript() {
+    output=$(moon $filename)
 }
