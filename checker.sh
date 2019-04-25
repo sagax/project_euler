@@ -5,17 +5,17 @@ ccount="\e[1;44m"
 cneed="\e[1;41m"
 result=0
 test_count=0
-name=(assembler awk bash c clojure coffeescript cpp crystal dart erl go haskell java javascript lua nim ocaml perl php python2 python3 r racket ruby rust tcl)
+source ../names.sh
 source ../compile_methods.sh
 output=""
 
 array_remove_value() {
     value=$1
-    for i in "${!name[@]}"
+    for i in "${!names[@]}"
     do
-        if [[ "${name[$i]}" == $value ]]
+        if [[ "${names[$i]}" == $value ]]
         then
-            unset name[$i]
+            unset names[$i]
         fi
     done
 }
@@ -23,8 +23,8 @@ array_remove_value() {
 def_count() {
     printf "\n"
     printf "count pass: ${ccount} $test_count ${cnormal}\n"
-    printf "count need: ${cneed} ${#name[*]} ${cnormal}\n"
-    printf "lang need: ${name[*]}\n"
+    printf "count need: ${cneed} ${#names[*]} ${cnormal}\n"
+    printf "lang need: ${names[*]}\n"
 }
 
 def_test() {
@@ -33,7 +33,7 @@ def_test() {
     then
         printf "$commandname: \t ${cfalse}FALSE${cnormal}\n"
         test_count=$((test_count + 1))
-        echo ">> $output <<"
+        printf "%s\n" ">> $output <<"
     else
         if [[ "$output" -eq "$result" ]]
         then
@@ -43,7 +43,7 @@ def_test() {
         else
             printf "$commandname: \t ${cfalse}FALSE${cnormal}\n"
             test_count=$((test_count + 1))
-            echo ">> $output <<"
+            printf "%s\n" ">> $output <<"
         fi
     fi
 }
@@ -90,6 +90,10 @@ def_command() {
             ;;
         "lua" )
             compile_lua
+            def_test $commandname
+            ;;
+        "moonscript" )
+            compile_moonscript
             def_test $commandname
             ;;
         "nim" )
@@ -156,6 +160,10 @@ def_command() {
             compile_dart
             def_test $commandname
             ;;
+        "vim" )
+            compile_vim
+            def_test $commandname
+            ;;
         "*" )
             echo "nothing"
             ;;
@@ -165,7 +173,7 @@ def_command() {
 def_find() {
     basename=$1
     filename=$2
-    for i in "${name[@]}"
+    for i in "${names[@]}"
     do
         if [[ $basename == $i ]]
         then
