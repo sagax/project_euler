@@ -1,5 +1,6 @@
 // go version go1.0.2
-// go version go1.4.3 linux/386
+// go version go1.4.3
+// go version go1.12.5
 
 package main
 
@@ -12,5 +13,5 @@ func main() {
             summ += item
         }
     }
-    fmt.Println(summ)
+    fmt.Printf("%d", summ)
 }

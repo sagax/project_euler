@@ -1,17 +1,15 @@
 % Erlang R16B02 (erts-5.10.3)
 % Erlang/OTP 19 [erts-8.1]
+% Erlang/OTP 21 [erts-10.2.3]
 
 -module(erl).
--export([start/0]).
+-export([fn_sum/2, start/0]).
+
+fn_sum(A, B) when A == 0 -> B;
+fn_sum(A, B) when A rem 3 == 0 -> fn_sum(A-1, B+A);
+fn_sum(A, B) when A rem 5 == 0 -> fn_sum(A-1, B+A);
+fn_sum(A, B) when A > 0 -> fn_sum(A-1, B).
 
 start() ->
-    List = lists:filter(
-             fun(X) ->
-                 if
-                     X rem 3 =:= 0 -> true;
-                     X rem 5 =:= 0 -> true;
-                     true -> false
-                 end
-             end, lists:seq(0, 999)),
-    Result = lists:foldl(fun(X, Sum) -> X + Sum end, 0, List),
-    io:format("~p", [Result]).
+  S = fn_sum(999, 0),
+  io:fwrite("~p", [S]).

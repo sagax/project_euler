@@ -1,5 +1,6 @@
---Lua 5.2.0  Copyright (C) 1994-2011 Lua.org, PUC-Rio
---Lua 5.2.3  Copyright (C) 1994-2013 Lua.org, PUC-Rio
+--Lua 5.2.0
+--Lua 5.2.3
+--Lua 5.3.5
 
 summ = 0
 for item = 0, 999 do
@@ -9,5 +10,4 @@ for item = 0, 999 do
     end
   end
 
-print (summ)
-
+io.write(summ)

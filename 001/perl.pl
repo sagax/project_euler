@@ -1,5 +1,6 @@
-# perl 5, version 16, subversion 0 (v5.16.0) built for x86_64-linux-thread-multi
-# perl 5, version 20, subversion 1 (v5.20.1) built for i586-linux-thread-multi
+# perl 5 (v5.16.0)
+# perl 5 (v5.20.1)
+# perl 5 (v5.30.1)
 
 $summ = 0;
 for ($item = 0; $item < 1000; $item++) {
@@ -9,4 +10,3 @@ for ($item = 0; $item < 1000; $item++) {
 }
 
 print "$summ";
-

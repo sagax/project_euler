@@ -1,28 +1,12 @@
 (*The OCaml toplevel, version 4.05.0*)
 
-let rec summ_f number end_number summ =
-    if number <= end_number then (
-        let _mod_to_3 = number mod 3 in
-        let _mod_to_5 = number mod 5 in
-        let _nn = number + 1 in
+let rec fn_sum a b =
+  match a with
+  | 0 -> b
+  | a when (a mod 3) == 0 -> fn_sum (a-1) (b+a)
+  | a when (a mod 5) == 0 -> fn_sum (a-1) (b+a)
+  | _ -> fn_sum (a-1) b
+;;
 
-        if _mod_to_3 = 0 || _mod_to_5 = 0 then (
-            let _s = summ + number in
-
-            if _nn <= end_number then (
-                summ_f _nn end_number _s;
-            )
-            else (
-                print_int _s;
-            );
-        )
-        else (
-            if _nn <= end_number then (
-                summ_f _nn end_number summ;
-            ) else (
-                print_int summ;
-            );
-        );
-    );;
-
-summ_f 0 999 0;;
+let a = fn_sum 999 0;;
+print_int a;;

@@ -8,5 +8,4 @@ for {set item 0} {$item < 1000} {incr item} {
   }
 }
 
-puts $summ
-
+puts -nonewline $summ

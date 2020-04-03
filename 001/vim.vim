@@ -9,5 +9,5 @@ while index < 1000
 endwhile
 
 redir >> /dev/stdout
-echo summ
+echon summ
 :qa

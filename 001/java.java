@@ -1,6 +1,7 @@
 // java version "1.8.0_51"
 // java version "1.8.0_65"
 // java version "1.8.0_111"
+// java version "1.8.0_221"
 
 class compile_java {
   public static void main(String[] args) {
@@ -10,6 +11,6 @@ class compile_java {
         summ += item;
       }
     }
-    System.out.println(summ);
+    System.out.printf("%d", summ);
   }
 }

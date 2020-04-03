@@ -1,3 +1,5 @@
+;Racket v7.0
+
 #lang racket
 
 (define summ 0)

@@ -7,4 +7,4 @@ for item in [0...1000]
   if item % 3 is 0 or item % 5 is 0
     summ += item
 
-console.log summ
+process.stdout.write "#{summ}"
