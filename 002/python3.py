@@ -1,4 +1,5 @@
 # Python 3.2.3
+# Python 3.7.3
 
 summ, a, b, c = 0, 0, 1, 0
 
@@ -8,4 +9,4 @@ while c < 4000000:
     if c % 2 == 0:
         summ += c
 
-print(summ)
+print(summ, end='')
