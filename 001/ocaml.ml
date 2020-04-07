@@ -1,4 +1,5 @@
-(*The OCaml toplevel, version 4.05.0*)
+(*OCaml 4.05.0*)
+(*OCaml 4.10.0*)
 
 let rec fn_sum a b =
   match a with

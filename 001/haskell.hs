@@ -6,4 +6,4 @@ fn_sum a b
   | otherwise = fn_sum (a - 1) b
 
 main = do
-    print $ fn_sum 999 0
+  print $ fn_sum 999 0

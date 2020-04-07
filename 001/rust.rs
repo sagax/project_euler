@@ -1,6 +1,7 @@
 // rustc 1.1.0
 // rustc 1.9.0
 // rustc 1.35.0
+// rustc 1.42.0
 
 fn main() {
     let mut summ = 0;
